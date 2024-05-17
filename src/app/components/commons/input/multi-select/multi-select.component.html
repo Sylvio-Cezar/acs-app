@@ -1,0 +1,77 @@
+<div class="w-full flex flex-col items-center">
+  <div class="w-full">
+    <div class="flex flex-col items-center relative">
+      <div class="w-full  svelte-1l8159u">
+        <div [ngClass]="[inputError && inputTouched ? 'border-red-600 focus:border-red-600 placeholder-shown:border-red-600 !border-t-none' : '']"
+          class="mt-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u border-t-transparent ring-0">
+          <div class="flex flex-auto flex-wrap">
+            <!-- Exibe as opções selecionadas -->
+            <div *ngFor="let selectedOption of selectedOptions" class="flex justify-center items-center m-1 font-medium py-1 px-2  rounded-full text-red-700 bg-red-100 border border-red-700 ">
+              <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                {{ selectedOption.name ? selectedOption.name : selectedOption.info ? selectedOption.info  : selectedOption }}
+              </div>
+              <!-- Botão para remover uma opção selecionada -->
+              <div class="flex flex-auto flex-row-reverse">
+                <div (click)="removeOption(selectedOption)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x cursor-pointer hover:text-red-400 rounded-full w-4 h-4 ml-2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <!-- Input para exibir as opções selecionadas e adicionar novas opções -->
+            <div class="flex-1">
+              <!-- O placeholder muda com base se há opções selecionadas ou não -->
+              <input (click)="toggleDropdown()" readonly [placeholder]="selectedOptions.length === 0 ? 'Selecione um ou mais itens' :''" (focus)="inputTouched = true" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800 cursor-pointer">
+              <label
+                class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-gray-500
+                leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-gray-500 transition-all top-0.5
+                peer-placeholder-shown:text-sm text-[11px]  before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px]
+                before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t before:border-l
+                before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5
+                after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t after:border-r
+                after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-600
+                before:border-gray-200 after:border-gray-200"
+                [ngClass]="[inputError && inputTouched ? 'text-red-600 before:border-red-600 peer-focus:before:!border-red-600 after:border-red-600 peer-focus:after:!border-red-600' : '']">
+                <label *ngIf="inputRequired" class="!text-red-600 font-bold mr-1">*</label>
+                {{ textLabel }}
+              </label>
+            </div>
+          </div>
+          <!-- Botão para abrir ou fechar o dropdown -->
+          <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
+            <button (click)="toggleDropdown()" class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
+              <svg *ngIf="isDropdownOpen" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up w-4 h-4">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              <svg *ngIf="!isDropdownOpen" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down w-4 h-4">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="inputError && inputTouched">
+          <small class="mb-2 block text-xs italic font-normal text-red-600">
+            {{ inputErrorMessage }}
+          </small>
+        </div>
+      </div>
+      <!-- Dropdown que exibe opções disponíveis -->
+      <div *ngIf="isDropdownOpen" class="absolute shadow top-100 bg-white z-40 w-full lef-0 rounded max-h-select overflow-y-auto svelte-5uyqqj">
+        <div class="flex flex-col w-full">
+          <!-- Exibe opções disponíveis para seleção -->
+          <ng-container *ngFor="let option of multiOptions">
+            <div *ngIf="!isSelected(option)" (click)="selectOption(option)" class="cursor-pointer w-full border-gray-100" [ngClass]="{'border-b': !lastItem(option), 'rounded-t': isFirstItem(option), 'rounded-b': lastItem(option), 'hover:bg-red-100': true}">
+              <div class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative" [ngClass]="{'border-red-700': isSelected(option)}">
+                <div class="w-full items-center flex">
+                  <div class="mx-2 leading-6">{{ option.name ? option.name : option.info ? option.info : option }}</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

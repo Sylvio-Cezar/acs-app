@@ -1,0 +1,31 @@
+<div class="py-2">
+  <label [for]="inputLabel" class="block text-sm font-medium leading-6 text-brown-primary text-nowrap overflow-hidden text-ellipsis">
+    <label *ngIf="inputRequired && !inputReadOnly" class="!text-red-600 font-bold mr-1 overflow-hidden">*</label>
+    {{ textLabel }}
+  </label>
+  <div class="flex items-baseline">
+    <div class="w-full">
+      <div class="rounded-[7px] flex justify-between bg-white border-2 border-gray-200"
+        [ngClass]="[inputReadOnly ? 'pointer-events-none !bg-gray-50' : '',
+        inputError && !inputReadOnly ? '!border border-red-600 focus:border-red-600 placeholder-shown:border-red-600' : '']">
+        <ng-container *ngFor="let option of options; let i = index;">
+          <div class="w-1/2">
+            <app-radio-option
+              [radioId]="option.radioId"
+              [radioName]="option.radioName"
+              [radioValue]="option.radioValue"
+              [radioLabel]="option.radioLabel"
+              [radioChecked]="option.radioChecked"
+              (valueChange)="onInputChange(i)">
+            </app-radio-option>
+          </div>
+        </ng-container>
+      </div>
+      <div *ngIf="inputError && !inputReadOnly">
+        <small class="block text-xs italic font-normal text-red-600">
+          {{ inputErrorMessage }}
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

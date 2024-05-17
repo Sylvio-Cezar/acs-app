@@ -1,0 +1,58 @@
+<div class="py-2">
+  <label [for]="inputLabel" class="block text-sm font-medium leading-6 text-brown-primary"
+    *ngIf="inputReadOnly" >
+    <label *ngIf="inputRequired" class="!text-red-600 font-bold mr-1">*</label>
+    {{ textLabel }}
+  </label>
+  <div class="relative w-full md:min-w-[200px] h-10">
+    <input [id]="inputId" [name]="inputName" [type]="inputType" [placeholder]="inputPlaceholder" [required]="inputRequired"
+      (input)="onInputChange($event)" [autocomplete]="inputAutocomplete" [value]="inputType != 'date' ? defaultValue : defaultValue | date:'yyyy-MM-dd'" (focus)="inputTouched = true"
+      class="peer w-full h-full bg-transparent text-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 border focus:border-2 border-t-transparent focus:!border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-gray-200 focus:border-gray-600 ring-0 focus:ring-0"
+      [ngClass]="[inputReadOnly ? '!border-0 !bg-gray-50 focus:border-t-black pointer-events-none' : '',
+      inputError && inputTouched ? 'border-red-600 focus:border-red-600 placeholder-shown:border-red-600 !border-t-red-600' : '',
+      (inputError && inputTouched) && (inputValue || defaultValue) ? '!border-t-transparent' : '']"
+      placeholder=" " [readOnly]="inputReadOnly" [pattern]="inputType == 'email' ? emailPattern : ''" />
+    <i *ngIf="hasIconLeft" [ngClass]="'w-full h-full flex -mt-7 pl-3 ' + iconClass"></i>
+    <i *ngIf="hasIconRight" [ngClass]="'w-full h-full flex justify-end -mt-7 pr-3 ' + iconClass"></i>
+    <label *ngIf="!inputReadOnly" [ngClass]="[inputError && inputTouched ? 'text-red-600 before:border-red-600 peer-focus:before:!border-red-600 after:border-red-600 peer-focus:after:!border-red-600' : '']"
+      class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-600 peer-focus:text-gray-900 before:border-gray-200 peer-focus:before:!border-gray-900 after:border-gray-200 peer-focus:after:!border-gray-900">
+      <label *ngIf="inputRequired" class="!text-red-600 font-bold mr-1">*</label>
+      {{ textLabel }}
+    </label>
+
+    <button *ngIf="inputType == 'password' || (inputType == 'text' && isPassText)" type="button" data-hs-toggle-password='{
+          "target": `${inputId}`
+        }'
+      class="absolute top-0 end-0 p-3.5 rounded-e-md dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+
+      <svg *ngIf="(inputType == 'password' || inputType == 'text') && !isToShowPass" (click)="showPass(true)"
+        class="flex-shrink-0 size-3.5 text-gray-400 dark:text-neutral-600" width="24" height="24" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path class="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+        <path class="hs-password-active:hidden"
+          d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
+        <path class="hs-password-active:hidden"
+          d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
+        <line class="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22" />
+        <path class="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+        <circle class="hidden hs-password-active:block" cx="12" cy="12" r="3" />
+      </svg>
+
+      <svg *ngIf="(inputType == 'password' || inputType == 'text') && isToShowPass" (click)="showPass(false)"
+        xmlns="http://www.w3.org/2000/svg" fill="none"
+        class="flex-shrink-0 size-3.5 text-gray-400 dark:text-neutral-600" width="24" height="24" viewBox="0 0 24 24"
+        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      </svg>
+
+    </button>
+
+    <div *ngIf="inputError && inputTouched">
+      <small class="block text-xs italic font-normal text-red-600">
+        {{ inputErrorMessage }}
+      </small>
+    </div>
+  </div>
+</div>

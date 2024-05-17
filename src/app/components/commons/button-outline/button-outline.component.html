@@ -1,0 +1,11 @@
+<button [disabled]="disabledBtn" [type]="typeBtn" [name]="nameBtn" [id]="idBtn" (click)="onClick.emit()" [ngClass]="[btnWidth +  ' text-red-700
+  flex justify-center uppercase  px-3 py-2 text-sm font-regular rounded-xl
+  hover:text-white border
+  border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none
+  focus:ring-red-300 font-medium text-center me-2 mb-2
+  dark:border-red-500 dark:text-red-500 dark:hover:text-white
+  dark:hover:bg-red-600
+  dark:focus:ring-red-900
+  transition duration-300',
+  disabledBtn ? 'cursor-not-allowed opacity-50 disabled:hover:bg-white disabled:hover:text-red-700 disabled:hover:dark:text-red-500' : '']">
+  {{ textBtn }}</button>

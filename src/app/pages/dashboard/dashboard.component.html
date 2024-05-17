@@ -1,0 +1,13 @@
+<nav class="bg-black fixed top-0 w-full z-50">
+  <app-dashboard-header></app-dashboard-header>
+</nav>
+
+<div class="flex md:h-screen overflow-hidden">
+  <nav class="hidden sm:flex md:h-full" data-hs-accordion-always-open>
+    <app-dashboard-sidemenu></app-dashboard-sidemenu>
+  </nav>
+
+  <div class="flex-1 md:h-full bg-gray-100 overflow-y-auto pt-16">
+    <router-outlet></router-outlet>
+  </div>
+</div>
