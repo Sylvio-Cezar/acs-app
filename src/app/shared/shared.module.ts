@@ -18,6 +18,7 @@ import { CardComponent } from "../components/commons/card/card.component";
 import { ConfirmDialogComponent } from "../components/commons/dialogs/confirm-dialog/confirm-dialog.component";
 import { FormComponent } from "../components/commons/form/form.component";
 import { ModalComponent } from "../components/commons/modal/modal.component";
+import { ChatsComponent } from "../components/commons/chats/chats.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ModalComponent } from "../components/commons/modal/modal.component";
     CardComponent,
     ConfirmDialogComponent,
     FormComponent,
-    ModalComponent
+    ModalComponent,
+    ChatsComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { ModalComponent } from "../components/commons/modal/modal.component";
     CardComponent,
     ConfirmDialogComponent,
     FormComponent,
-    ModalComponent
+    ModalComponent,
+    ChatsComponent
   ]
 })
 export class SharedModule { }

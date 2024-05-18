@@ -1,0 +1,153 @@
+<div class="flex flex-col md:flex-row overflow-hidden">
+  <!-- Sidebar -->
+  <div class="w-full md:w-1/4 bg-white">
+    <!-- Sidebar Header -->
+    <header class="p-4 border-b border-gray-300 flex justify-between items-center bg-blue-600 text-white">
+      <h1 class="text-2xl font-semibold">Chats</h1>
+      <div class="relative md:hidden">
+        <button type="button" (click)="toggleChatList()"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-white" aria-controls="mobile-menu"
+          [attr.aria-expanded]="isChatListOpen ? 'true' : 'false'">
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open chats</span>
+          <!-- Icon when menu is closed -->
+          <svg *ngIf="!isChatListOpen" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-6-6h12" />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg *ngIf="isChatListOpen" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12h12" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Contact List -->
+    <div *ngIf="isChatListOpen" class="overflow-y-auto h-fit md:h-screen p-3 pb-0 md:pb-20">
+      <div *ngFor="let chat of chats; let last = last" class="hover:bg-gray-100 pt-2"
+        [ngClass]="chat.id == selectedChat[0].id ? 'bg-gray-100 cursor-default' : ''">
+        <div class="flex h-14 overflow-hidden items-center mb-4 cursor-pointer  p-2 rounded-md"
+          (click)="setSelectedChat(chat.id)">
+          <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
+            <img src="/assets/images/logo.png" alt="User Avatar" class="w-12 h-12 rounded-full">
+          </div>
+          <div class="flex-1 h-14">
+            <h2 class="text-lg font-semibold">{{chat.sender}}</h2>
+            <p class="text-gray-600">
+              {{chat.messages[chat.messages.length - 1].sender_id != 5 ? chat.sender : 'Você'}}:
+              {{chat.messages[chat.messages.length - 1].message}}
+            </p>
+          </div>
+        </div>
+        <hr *ngIf="!last">
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Chat Area -->
+  <div class="w-full md:flex-1">
+    <!-- Chat Header -->
+    <header class="flex items-center bg-white p-4 text-gray-700 border-t border-gray-300">
+      <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
+        <img src="/assets/images/logo.png" alt="User Avatar" class="w-12 h-12 rounded-full">
+      </div>
+      <h1 class="text-2xl font-semibold">{{selectedChat[0].sender}}</h1>
+    </header>
+
+    <!-- Chat Messages -->
+
+    <div class="flex-1 h-screen overflow-y-scroll p-4 bg-gray-100 rounded-md">
+      <div *ngFor="let message of selectedChat[0].messages">
+
+        <!-- Outgoing Message -->
+        <div *ngIf="message.sender_id != 5" class="flex justify-end mb-4">
+          <div class="flex min-w-32 max-w-56 md:max-w-96 md:min-w-48 bg-blue-500 text-white rounded-lg p-3 gap-3">
+            <p class="w-full">
+              {{message.message}}<br>
+              <small class="text-[10px] float-end">{{message.created_at | date:'dd/MM/yyyy hh:mm'}}</small>
+            </p>
+          </div>
+          <div class="w-9 h-9 rounded-full flex items-center justify-center ml-2">
+            <img src="/assets/images/logo.png" alt="My Avatar" class="w-8 h-8 rounded-full">
+          </div>
+        </div>
+
+        <!-- Incoming Message -->
+        <div *ngIf="message.sender_id == 5" class="flex mb-4">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center mr-2">
+            <img src="/assets/images/logo.png" alt="User Avatar" class="w-8 h-8 rounded-full">
+          </div>
+          <div class="flex min-w-32 max-w-56 md:max-w-96 md:min-w-48 bg-white rounded-lg p-3 gap-3">
+            <p class="text-gray-700 w-full">
+              {{message.message}}<br>
+              <small class="text-[10px] float-end">{{message.created_at | date:'dd/MM/yyyy hh:mm'}}</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input -->
+    <footer class="bg-white py-4 px-0 w-full">
+      <div class="relative flex flex-col md:flex-row">
+        <div class="relative flex-grow">
+          <span class="absolute inset-y-0 flex items-center">
+            <button type="button"
+              class="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="h-6 w-6 text-gray-600">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                </path>
+              </svg>
+            </button>
+          </span>
+          <input type="text" placeholder="Digite aqui..."
+            class="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-100 md:rounded-r-none rounded-md py-3">
+        </div>
+        <div class="mt-2 md:mt-0 flex justify-center md:justify-start items-center md:bg-gray-100 bg-white">
+          <button type="button"
+            class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              class="h-6 w-6 text-gray-600">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
+              </path>
+            </svg>
+          </button>
+          <button type="button"
+            class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              class="h-6 w-6 text-gray-600">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+              </path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </button>
+          <button type="button"
+            class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              class="h-6 w-6 text-gray-600">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+          <button type="button"
+            class="inline-flex items-center justify-center md:rounded-l-none rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none">
+            <span class="font-bold">Enviar</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+              class="h-6 w-6 ml-2 transform rotate-90">
+              <path
+                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

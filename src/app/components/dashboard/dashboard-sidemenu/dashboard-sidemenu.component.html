@@ -1,9 +1,9 @@
-<div class="sm:mt-16  hs-accordion-group p-6 w-full sm:w-52 md:w-52 lg:w-52 mg:h-svh sm:h-svh lg:h-svh flex-col flex-wrap bg-gray-800">
+<div class="sm:mt-16  hs-accordion-group p-6 w-full sm:w-52 md:w-52 lg:w-52 mg:h-svh sm:h-svh lg:h-svh flex-col flex-wrap bg-blue-700">
   <ul class="space-y-1.5">
     <li>
       <a class="cursor-pointer flex items-center gap-x-3.5 py-2 px-2.5 font-medium text-sm  hover:text-white hover:bg-black rounded-lg"
         (click)="activatedMenu('dashboard')" routerLink="/dashboard/home"
-        [ngClass]="menuActivated == 'dashboard' ? 'bg-red-700 text-white' : 'text-white'">
+        [ngClass]="menuActivated == 'dashboard' ? 'bg-blue-900 text-white' : 'text-white'">
         <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -16,7 +16,7 @@
       <button type="button"
         class="font-medium hs-accordion-toggle hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-black hover:text-white"
         (click)="activatedMenu('users')"
-        [ngClass]="menuActivated == 'users' ? 'bg-red-700 text-white' : 'text-white'">
+        [ngClass]="menuActivated == 'users' ? 'bg-blue-900 text-white' : 'text-white'">
         <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -35,23 +35,23 @@
         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 cursor-pointer">
         <ul class="hs-accordion-group ps-3 pt-2">
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-red-500 rounded-lg"
+            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-white-500 rounded-lg"
               (click)="setSubMenuActivated('sub-user1')" routerLink="/dashboard/candidates"
-              [ngClass]="subMenuActivated == 'sub-user1' ? 'text-red-500' : 'text-white'">
+              [ngClass]="subMenuActivated == 'sub-user1' ? 'text-white-500' : 'text-white'">
               <i class="fa-solid fa-user"></i> Candidates
             </a>
           </li>
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-red-500 rounded-lg"
+            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-white-500 rounded-lg"
               (click)="setSubMenuActivated('sub-user2')"
-              [ngClass]="subMenuActivated == 'sub-user2' ? 'text-red-500' : 'text-white'">
+              [ngClass]="subMenuActivated == 'sub-user2' ? 'text-white-500' : 'text-white'">
               <i class="fa-solid fa-user-plus"></i> Sub2
             </a>
           </li>
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-red-500 rounded-lg"
+            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-white-500 rounded-lg"
               (click)="setSubMenuActivated('sub-user3')"
-              [ngClass]="subMenuActivated == 'sub-user3' ? 'text-red-500' : 'text-white'">
+              [ngClass]="subMenuActivated == 'sub-user3' ? 'text-white-500' : 'text-white'">
               <i class="fa-solid fa-user-plus"></i> sub3
             </a>
           </li>
@@ -62,7 +62,7 @@
       <button type="button"
         class="font-medium hs-accordion-toggle hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm  rounded-lg hover:bg-black hover:text-white"
         (click)="activatedMenu('vacancies')"
-        [ngClass]="menuActivated == 'vacancies' ? 'bg-red-700 text-white' : 'text-white'">
+        [ngClass]="menuActivated == 'vacancies' ? 'bg-blue-900 text-white' : 'text-white'">
         <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -81,23 +81,23 @@
         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 cursor-pointer">
         <ul class="hs-accordion-group ps-3 pt-2">
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-red-500 rounded-lg"
+            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-white-500 rounded-lg"
               (click)="setSubMenuActivated('sub-vacancy1')" routerLink="/dashboard/vacancies"
-              [ngClass]="subMenuActivated == 'sub-vacancy1' ? 'text-red-500' : 'text-white'">
+              [ngClass]="subMenuActivated == 'sub-vacancy1' ? 'text-white-500' : 'text-white'">
               <i class="fa-solid fa-user"></i> Vagas
             </a>
           </li>
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-red-500 rounded-lg"
+            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-white-500 rounded-lg"
               (click)="setSubMenuActivated('sub-vacancy2')"
-              [ngClass]="subMenuActivated == 'sub-vacancy2' ? 'text-red-500' : 'text-white'">
+              [ngClass]="subMenuActivated == 'sub-vacancy2' ? 'text-white-500' : 'text-white'">
               <i class="fa-solid fa-user-plus"></i> Sub2
             </a>
           </li>
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-red-500 rounded-lg"
+            <a class="flex items-center gap-x-3.5 py-2 px-1.5 text-sm  hover:text-white-500 rounded-lg"
               (click)="setSubMenuActivated('sub-vacancy3')"
-              [ngClass]="subMenuActivated == 'sub-vacancy3' ? 'text-red-500' : 'text-white'">
+              [ngClass]="subMenuActivated == 'sub-vacancy3' ? 'text-white-500' : 'text-white'">
               <i class="fa-solid fa-user-plus"></i> sub3
             </a>
           </li>
@@ -108,7 +108,7 @@
     <!-- <li>
       <a class="cursor-pointer flex items-center gap-x-3.5 py-2 px-2.5 font-medium text-sm  hover:text-white hover:bg-black rounded-lg"
         (click)="activatedMenu('cursos')"
-        [ngClass]="menuActivated == 'cursos' ? 'bg-red-700 text-white' : 'text-white'">
+        [ngClass]="menuActivated == 'cursos' ? 'bg-blue-900 text-white' : 'text-white'">
         <i class="fa-solid fa-book"></i>
         Cursos
       </a>

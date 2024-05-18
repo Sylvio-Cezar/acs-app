@@ -15,7 +15,7 @@ export class ButtonPrimaryComponent implements OnInit {
   @Input() iconClass?: string = '';
   @Input() hasIconLeft?: boolean = false;
   @Input() hasIconRight?: boolean = false;
-  @Input() btnBgColor?: string = 'bg-red-700';
+  @Input() btnBgColor?: string = 'bg-blue-700';
   @Input() disabledBtn?: boolean;
   @Input() hasLoading?: boolean = false;
   @Output() onClick = new EventEmitter<void>();
