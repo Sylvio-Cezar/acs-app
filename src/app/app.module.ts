@@ -2,19 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DatePipe } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 
 
 @NgModule({
   declarations: [
-    // AppComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +23,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
+    DashboardModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',

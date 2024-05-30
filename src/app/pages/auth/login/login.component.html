@@ -3,7 +3,7 @@
     <app-card paddingBody="p-0">
       <div class="grid grid-cols-1 md:grid-cols-2 md:items-center gap-4 max-w-6xl w-full">
         <div class="w-full">
-          <img src="./assets/images/logo.png" class="hidden md:flex sm:w-full sm:h-full object-cover rounded-l-lg"
+          <img src="./assets/images/logo_alternativa.png" class="hidden md:flex sm:w-full sm:h-full object-cover rounded-l-lg"
             alt="login-image" />
         </div>
         <div class="w-full p-6 py-6">
@@ -16,15 +16,31 @@
             </div>
             <div class="mb-6">
               <div class="relative">
-                <app-basic-input inputType="email" inputId="inpEmail"  inputLabel="inpEmail"
-                  textLabel="Digite seu e-mail" (valueChange)=getInputEmail($event)></app-basic-input>
+                <app-basic-input
+                  inputType="email"
+                  inputId="inpEmail"
+                  inputLabel="inpEmail"
+                  textLabel="Digite seu e-mail"
+                  (valueChange)="getInputEmail($event)"
+                  [inputRequired]="true"
+                  [inputError]="!formValid.email || !formValid.emailPattern"
+                  [inputErrorMessage]="emailError">
+                </app-basic-input>
               </div>
             </div>
             <div class="mb-6">
               <div class="relative">
-                <app-basic-input inputType="password" inputId="inpPassword"
-                  inputLabel="inpPassword" textLabel="Digite sua senha"
-                  (valueChange)=getInputPass($event)></app-basic-input>
+                <app-basic-input
+                  inputType="password"
+                  inputId="inpPassword"
+                  inputLabel="inpPassword"
+                  textLabel="Digite sua senha"
+                  (valueChange)="getInputPass($event)"
+                  [inputRequired]="true"
+                  [inputError]="!formValid.password"
+                  [inputErrorMessage]="!formValid.password ?
+                  'O campo senha é obrigatório' : ''">
+                </app-basic-input>
               </div>
             </div>
             <div class="flex items-center justify-end gap-2 mb-6">
@@ -36,7 +52,8 @@
               <app-button-primary
                 btnWidth="w-full"
                 typeBtn="submit"
-                textBtn="ENTRAR">
+                textBtn="ENTRAR"
+                [disabledBtn]="!getAllValid()">
               </app-button-primary>
             </div>
           </app-form>
