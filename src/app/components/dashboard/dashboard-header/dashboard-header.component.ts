@@ -32,6 +32,7 @@ export class DashboardHeaderComponent {
 
   logout() {
     // Lógica para logout
+    this.router.navigate(['']);
   }
 
 
