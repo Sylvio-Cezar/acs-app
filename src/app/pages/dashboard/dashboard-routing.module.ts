@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       },
       {
+        path: 'irpf',
+        loadChildren: () => import('./irpf/irpf.module').then(m => m.IrpfModule),
+      },
+      {
         path: '', redirectTo: 'home', pathMatch: 'full'
       },
     ]
