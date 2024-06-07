@@ -1,5 +1,5 @@
 <div
-  class="sm:mt-16  hs-accordion-group p-6 w-full sm:w-52 md:w-52 lg:w-52 mg:h-svh sm:h-svh lg:h-svh flex-col flex-wrap bg-blue-700">
+  class="overflow-y-scroll sm:mt-16 hs-accordion-group p-6 w-full sm:w-72 md:w-72 lg:w-72 mg:h-[95vh] sm:h-[95vh] lg:h-[95vh] flex-col flex-wrap bg-blue-700">
   <ul class="flex flex-col gap-2 max-w-[280px] mx-auto">
     <li>
       <details class="group">
@@ -9,8 +9,8 @@
           <span class="text-white" class="flex gap-2 items-center">
             <img src="/assets/svgs/house-solid.svg" class="w-5 h-5" style="filter: invert(1);">
 
-            <span class="text-white">
-              <a href="dashboard/home" (click)="activatedMenu('home')">Home</a>
+            <span class="text-white" (click)="activatedMenu('home')">
+              <a (click)="navigate('home')">Home</a>
             </span>
           </span>
         </summary>
@@ -22,10 +22,10 @@
           class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
 
           <span class="text-white" class="flex gap-2 items-center">
-            <img src="/assets/svgs/house-solid.svg" class="w-5 h-5" style="filter: invert(1);">
+            <img src="/assets/svgs/building-solid.svg" class="w-5 h-5" style="filter: invert(1);">
 
             <span class="text-white">
-              Item 3
+              Trabalhista
             </span>
           </span>
           <svg class="w-4 h-4 text-gray-500 transition group-open:rotate-90" xmlns="http://www.w3.org/2000/svg"
@@ -37,17 +37,50 @@
         </summary>
         <article class="px-4 pb-4">
           <ul class="flex flex-col gap-1 pl-2 text-white">
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 1</a>
+            <li class="flex items-center" (click)="activatedMenu('ferias-coletivas')"
+              [ngClass]="menuActivated == 'ferias-coletivas' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/plane-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('ferias-coletivas')" class="ml-2 cursor-pointer">Férias Coletivas</a>
             </li>
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 2</a>
+            <li class="flex items-center" (click)="activatedMenu('decimo-terceiro')"
+              [ngClass]="menuActivated == 'decimo-terceiro' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/money-bills-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('decimo-terceiro')" class="ml-2 cursor-pointer">Décimo Terceiro Salário</a>
             </li>
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 3</a>
+            <li class="flex items-center" (click)="activatedMenu('calculos-previdenciarios')"
+              [ngClass]="menuActivated == 'calculos-previdenciarios' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/calculator-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('calculos-previdenciarios')" class="ml-2 cursor-pointer">Cálculos Previdenciários</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('salario-familia')"
+              [ngClass]="menuActivated == 'salario-familia' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/money-bills-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('salario-familia')" class="ml-2 cursor-pointer">Salário-Família</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('esocial')"
+              [ngClass]="menuActivated == 'esocial' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/file-solid.svg" class="w-4 h-4" style="filter: invert(1); transform: scaleX(-1);">
+              <a (click)="navigate('esocial')" class="ml-2 cursor-pointer">eSocial</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('fgts-digital')"
+              [ngClass]="menuActivated == 'fgts-digital' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/sack-dollar-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('fgts-digital')" class="ml-2 cursor-pointer">FGTS Digital</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('dctfweb')"
+              [ngClass]="menuActivated == 'dctfweb' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/table-columns-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('dctfweb')" class="ml-2 cursor-pointer">DCTFWeb</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('efd-reinf')"
+              [ngClass]="menuActivated == 'efd-reinf' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/circle-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('efd-reinf')" class="ml-2 cursor-pointer">EFD - Reinf</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('contribuicoes-sindicais')"
+              [ngClass]="menuActivated == 'contribuicoes-sindicais' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/puzzle-piece-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('contribuicoes-sindicais')" class="ml-2 cursor-pointer">Contribuições Sindicais</a>
             </li>
           </ul>
         </article>
@@ -59,10 +92,10 @@
           class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
 
           <span class="text-white" class="flex gap-2 items-center">
-            <img src="/assets/svgs/house-solid.svg" class="w-5 h-5" style="filter: invert(1);">
+            <img src="/assets/svgs/flag-solid.svg" class="w-5 h-5" style="filter: invert(1);">
 
             <span class="text-white">
-              Item 1
+              Federal
             </span>
           </span>
           <svg class="w-4 h-4 text-gray-500 transition group-open:rotate-90" xmlns="http://www.w3.org/2000/svg"
@@ -74,17 +107,40 @@
         </summary>
         <article class="px-4 pb-4">
           <ul class="flex flex-col gap-1 pl-2 text-white">
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 1</a>
+            <li class="flex items-center" (click)="activatedMenu('irpf')"
+              [ngClass]="menuActivated == 'irpf' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/brave.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('irpf')" class="ml-2 cursor-pointer">IRPF 2024</a>
             </li>
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 2</a>
+            <li class="flex items-center" (click)="activatedMenu('efd-reinf')"
+              [ngClass]="menuActivated == 'efd-reinf' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/circle-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('efd-reinf')" class="ml-2 cursor-pointer">EFD - Reinf</a>
             </li>
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 3</a>
+            <li class="flex items-center" (click)="activatedMenu('dctfweb')"
+              [ngClass]="menuActivated == 'dctfweb' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/table-columns-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('dctfweb')" class="ml-2 cursor-pointer">DCTFWeb</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('pis-cofins')"
+              [ngClass]="menuActivated == 'pis-cofins' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/scale-balanced-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('pis-cofins')" class="ml-2 cursor-pointer">PIS / COFINS</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('simples-nacional')"
+              [ngClass]="menuActivated == 'simples-nacional' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/s-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('simples-nacional')" class="ml-2 cursor-pointer">Simples Nacional</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('mei')"
+              [ngClass]="menuActivated == 'mei' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/briefcase-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('mei')" class="ml-2 cursor-pointer">MEI</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('ecd')"
+              [ngClass]="menuActivated == 'ecd' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/file-lines-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('ecd')" class="ml-2 cursor-pointer">ECD</a>
             </li>
           </ul>
         </article>
@@ -96,10 +152,10 @@
           class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
 
           <span class="text-white" class="flex gap-2 items-center">
-            <img src="/assets/svgs/house-solid.svg" class="w-5 h-5" style="filter: invert(1);">
+            <img src="/assets/svgs/receipt-solid.svg" class="w-5 h-5" style="filter: invert(1);">
 
             <span class="text-white">
-              Item 2
+              ICMS
             </span>
           </span>
           <svg class="w-4 h-4 text-gray-500 transition group-open:rotate-90" xmlns="http://www.w3.org/2000/svg"
@@ -111,17 +167,95 @@
         </summary>
         <article class="px-4 pb-4">
           <ul class="flex flex-col gap-1 pl-2 text-white">
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 1</a>
+            <li class="flex items-center" (click)="activatedMenu('aliquotas-beneficios')"
+              [ngClass]="menuActivated == 'aliquotas-beneficios' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/percent-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('aliquotas-beneficios')" class="ml-2 cursor-pointer">Alíquotas / Benefícios Fiscais</a>
             </li>
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 2</a>
+            <li class="flex items-center" (click)="activatedMenu('cest')"
+              [ngClass]="menuActivated == 'cest' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/landmark-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('cest')" class="ml-2 cursor-pointer">CEST</a>
             </li>
-            <li class="flex items-center">
-              <img src="/assets/svgs/house-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a href="" class="ml-2">SubItem 3</a>
+            <li class="flex items-center" (click)="activatedMenu('cfop')"
+              [ngClass]="menuActivated == 'cfop' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/table-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('cfop')" class="ml-2 cursor-pointer">CFOP</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('cst')"
+              [ngClass]="menuActivated == 'cst' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/table-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('cst')" class="ml-2 cursor-pointer">CST</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('destda')"
+              [ngClass]="menuActivated == 'destda' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/s-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('destda')" class="ml-2 cursor-pointer">DeSTDA - Simples Nacional</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('difal-nao-contribuinte')"
+              [ngClass]="menuActivated == 'difal-nao-contribuinte' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/sack-dollar-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('difal-nao-contribuinte')" class="ml-2 cursor-pointer">DIFAL Não Contribuinte</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('diferencial-aliquotas')"
+              [ngClass]="menuActivated == 'diferencial-aliquotas' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/table-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('diferencial-aliquotas')" class="ml-2 cursor-pointer">Diferencial de Alíquotas</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('icms-monofasico-combustivel')"
+              [ngClass]="menuActivated == 'icms-monofasico-combustivel' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/gas-pump-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('icms-monofasico-combustivel')" class="ml-2 cursor-pointer">ICMS Monofásico - Combustível</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('importados')"
+              [ngClass]="menuActivated == 'importados' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/earth-americas-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('importados')" class="ml-2 cursor-pointer">Importados - Alíquota 4%</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('substituicao-tributaria')"
+              [ngClass]="menuActivated == 'substituicao-tributaria' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/industry-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('substituicao-tributaria')" class="ml-2 cursor-pointer">Substituição Tributária</a>
+            </li>
+          </ul>
+        </article>
+      </details>
+    </li>
+    <li>
+      <details class="group">
+        <summary
+          class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
+
+          <span class="text-white" class="flex gap-2 items-center">
+            <img src="/assets/svgs/landmark-solid.svg" class="w-5 h-5" style="filter: invert(1);">
+
+            <span class="text-white">
+              Obrigações Acessórias
+            </span>
+          </span>
+          <svg class="w-4 h-4 text-gray-500 transition group-open:rotate-90" xmlns="http://www.w3.org/2000/svg"
+            width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+            <path class="stroke-white" fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
+            </path>
+          </svg>
+        </summary>
+        <article class="px-4 pb-4">
+          <ul class="flex flex-col gap-1 pl-2 text-white">
+            <li class="flex items-center" (click)="activatedMenu('ambito-trabalhista')"
+              [ngClass]="menuActivated == 'ambito-trabalhista' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/building-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('ambito-trabalhista')" class="ml-2 cursor-pointer">Âmbito Trabalhista/Previdenciário</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('ambito-federal')"
+              [ngClass]="menuActivated == 'ambito-federal' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/flag-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('ambito-federal')" class="ml-2 cursor-pointer">Âmbito Federal</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('ambito-estadual')"
+              [ngClass]="menuActivated == 'ambito-estadual' ? 'border-b-4 border-b-blue-800 rounded-md' : ''">
+              <img src="/assets/svgs/flag-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('ambito-estadual')" class="ml-2 cursor-pointer">Âmbito Estadual</a>
             </li>
           </ul>
         </article>

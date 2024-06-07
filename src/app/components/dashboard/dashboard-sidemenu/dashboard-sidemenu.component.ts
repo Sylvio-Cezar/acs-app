@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-sidemenu',
@@ -10,7 +11,9 @@ export class DashboardSidemenuComponent implements OnInit {
   menuCollapsed: boolean = false;
   menuActivated: string = 'home';
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +25,9 @@ export class DashboardSidemenuComponent implements OnInit {
   activatedMenu(menu: string) {
     this.menuActivated = menu;
     // Implementar de acordo com a disponibilidade dos menus
+  }
+
+  navigate(path: string) {
+    this.router.navigate([`dashboard/${path}`]);
   }
 }
