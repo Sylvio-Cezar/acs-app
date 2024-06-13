@@ -24,7 +24,6 @@ export class DashboardSidemenuComponent implements OnInit {
 
   activatedMenu(menu: string) {
     this.menuActivated = menu;
-    // Implementar de acordo com a disponibilidade dos menus
   }
 
   navigate(path: string) {

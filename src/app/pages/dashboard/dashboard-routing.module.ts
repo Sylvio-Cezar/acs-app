@@ -16,6 +16,18 @@ const routes: Routes = [
         loadChildren: () => import('./irpf/irpf.module').then(m => m.IrpfModule),
       },
       {
+        path: 'ferias-coletivas',
+        loadChildren: () => import('./vacation/vacation.module').then(m => m.VacationModule),
+      },
+      {
+        path: 'aliquotas-beneficios',
+        loadChildren: () => import('./tax-rates/tax-rates.module').then(m => m.TaxRatesModule),
+      },
+      {
+        path: 'ambito-trabalhista',
+        loadChildren: () => import('./labor-scope/labor-scope.module').then(m => m.LaborScopeModule),
+      },
+      {
         path: '', redirectTo: 'home', pathMatch: 'full'
       },
     ]

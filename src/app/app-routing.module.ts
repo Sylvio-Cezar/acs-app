@@ -5,11 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule),
-    // loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {
     path: 'dashboard',
-    // loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule),
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
   },
 ]
