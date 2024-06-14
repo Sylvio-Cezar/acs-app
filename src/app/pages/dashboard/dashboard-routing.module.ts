@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { LaborScopeComponent } from './labor-scope/labor-scope.component';
+import { TaxRatesComponent } from './tax-rates/tax-rates.component';
+import { VacationComponent } from './vacation/vacation.component';
+import { IrpfComponent } from './irpf/irpf.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -9,23 +14,23 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+        component: HomeComponent
       },
       {
         path: 'irpf',
-        loadChildren: () => import('./irpf/irpf.module').then(m => m.IrpfModule),
+        component: IrpfComponent
       },
       {
         path: 'ferias-coletivas',
-        loadChildren: () => import('./vacation/vacation.module').then(m => m.VacationModule),
+        component: VacationComponent
       },
       {
         path: 'aliquotas-beneficios',
-        loadChildren: () => import('./tax-rates/tax-rates.module').then(m => m.TaxRatesModule),
+        component: TaxRatesComponent
       },
       {
         path: 'ambito-trabalhista',
-        loadChildren: () => import('./labor-scope/labor-scope.module').then(m => m.LaborScopeModule),
+        component: LaborScopeComponent
       },
       {
         path: '', redirectTo: 'home', pathMatch: 'full'

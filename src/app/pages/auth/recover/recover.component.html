@@ -4,15 +4,15 @@
       <div class="grid grid-cols-1 md:grid-cols-2 md:items-center gap-4 max-w-6xl w-full">
         <div class="w-full">
           <img src="./assets/images/logo_alternativa.png" class="hidden md:flex sm:w-full sm:h-full object-cover rounded-l-lg"
-            alt="login image" />
+            alt="recover image" />
         </div>
         <div class="w-full p-6 py-6">
-          <app-form (onSubmit)="login()">
+          <app-form (onSubmit)="sendRecover()">
             <div class="mb-6">
-              <h3 class="text-3xl font-extrabold text-center">Seja bem-vindo à plataforma ACS!</h3>
+              <h3 class="text-3xl font-extrabold text-center">Recuperar senha</h3>
             </div>
             <div class="mb-6">
-              <h3 class="text-1xl font-medium  text-gray-600 text-center">Informe os dados abaixo para acessar sua conta:</h3>
+              <h3 class="text-1xl font-medium  text-gray-600 text-center">Informe seu email abaixo:</h3>
             </div>
             <div class="mb-6">
               <div class="relative">
@@ -28,31 +28,16 @@
                 </app-basic-input>
               </div>
             </div>
-            <div class="mb-6">
-              <div class="relative">
-                <app-basic-input
-                  inputType="password"
-                  inputId="inpPassword"
-                  inputLabel="inpPassword"
-                  textLabel="Digite sua senha"
-                  (valueChange)="getInputPass($event)"
-                  [inputRequired]="true"
-                  [inputError]="!formValid.password"
-                  [inputErrorMessage]="!formValid.password ?
-                  'O campo senha é obrigatório' : ''">
-                </app-basic-input>
-              </div>
-            </div>
-            <div class="flex items-center justify-end gap-2 mb-6">
+            <div *ngIf="recoverTime > 0" class="flex items-center justify-center gap-2 mb-6">
               <div>
-                <a href="/recover" class="text-blue-700 font-semibold text-sm hover:underline">Esqueceu sua senha?</a>
+                <span class="text-blue-700 font-semibold text-sm">Tente novamente em {{recoverTime}} {{recoverTime == 1 ? 'segundo' : 'segundos'}}</span>
               </div>
             </div>
             <div>
               <app-button-primary
                 btnWidth="w-full"
                 typeBtn="submit"
-                textBtn="ENTRAR"
+                textBtn="ENVIAR"
                 [disabledBtn]="!getAllValid()">
               </app-button-primary>
             </div>

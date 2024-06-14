@@ -58,7 +58,7 @@ export class LoginComponent {
       this.messageService.successMessage('Login efetuado com sucesso.');
       this.redirect();
     } else {
-      this.messageService.errorMessage('Usuário ou senha incorretos!');
+      this.messageService.errorMessage('Usuário e/ou senha incorretos!');
     }
   }
 
