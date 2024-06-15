@@ -18,6 +18,21 @@
     </li>
     <li>
       <details class="group">
+        <summary [ngClass]="menuActivated == 'audit' ? 'bg-blue-800 rounded-lg' : ''"
+          class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
+
+          <span class="text-white" class="flex gap-2 items-center">
+            <img src="/assets/svgs/magnifying-glass-solid.svg" class="w-5 h-5" style="filter: invert(1);">
+
+            <span class="text-white" (click)="activatedMenu('audit')">
+              <a (click)="navigate('audit')">Auditoria</a>
+            </span>
+          </span>
+        </summary>
+      </details>
+    </li>
+    <li>
+      <details class="group">
         <summary
           class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
 

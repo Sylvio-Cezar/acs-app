@@ -1,0 +1,41 @@
+<h2 class="font-medium text-md">{{ filesTitle }}</h2>
+<div class="m-auto relative border-2 border-gray-300 border-dashed rounded-lg p-6" #dropzone>
+  <div class="text-center p-12">
+    <i class="fa-solid fa-upload text-3xl"></i>
+    <h3 class="mt-2 text-sm font-medium text-gray-900">
+      <label for="file-upload" class="relative cursor-pointer">
+        <span>Arraste e solte</span>
+        <span class="text-blue-600"> ou clique aqui </span>
+        <span>para fazer upload</span>
+        <input multiple id="file-upload" name="file-upload" type="file" accept="image/png, image/jpeg, image/jpg, application/pdf" (change)="fileChangeEvent($event)" class="sr-only">
+      </label>
+    </h3>
+    <p class="mt-1 text-xs text-gray-500">
+      PNG, JPEG, JPG, PDF, TXT, CSV, HTML, DOC, DOCX até 5MB
+    </p>
+  </div>
+
+  <div *ngIf="selectedFiles.length > 0">
+    <div *ngFor="let file of selectedFiles; let i = index" class="mt-2">
+      <div class="flex float-end pt-4">
+        <button type="button" data-behavior="cancel" (click)="deleteSelected(i)"
+          class="bg-white rounded-md text-blue-400 hover:text-blue-500 focus:outline-none">
+          <span class="sr-only">Close</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <img *ngIf="file.startsWith('data:image/')"  [src]="file" class="mx-auto w-full border-2 rounded-lg border-1">
+      <div *ngIf="file.startsWith('data:application/pdf')" (click)="openPDF(file)" class="mx-auto w-full border-2 rounded-lg border-1 flex items-center justify-center cursor-pointer">
+        <i class="fa-solid fa-file-pdf mr-3"></i>
+        {{ fileNames[i] }}
+      </div>
+      <div *ngIf="!file.startsWith('data:image/') && !file.startsWith('data:application/pdf')" class="mx-auto w-full border-2 rounded-lg border-1 flex items-center justify-center">
+        <i class="fa-solid fa-file-pdf mr-3"></i>
+        {{ fileNames[i] }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ import { ConfirmDialogComponent } from "../components/commons/dialogs/confirm-di
 import { FormComponent } from "../components/commons/form/form.component";
 import { ModalComponent } from "../components/commons/modal/modal.component";
 import { ChatsComponent } from "../components/commons/chats/chats.component";
+import { MultiImagesComponent } from "../components/commons/input/multi-images/multi-images.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ChatsComponent } from "../components/commons/chats/chats.component";
     ConfirmDialogComponent,
     FormComponent,
     ModalComponent,
-    ChatsComponent
+    ChatsComponent,
+    MultiImagesComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { ChatsComponent } from "../components/commons/chats/chats.component";
     ConfirmDialogComponent,
     FormComponent,
     ModalComponent,
-    ChatsComponent
+    ChatsComponent,
+    MultiImagesComponent,
   ]
 })
 export class SharedModule { }

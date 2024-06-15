@@ -1,0 +1,23 @@
+<div class="p-4 bg-white min-h-screen">
+  <div class="w-full">
+    <div>
+      <h1 class="text-2xl text-center font-bold text-blue-700 mt-4">Auditoria</h1>
+      <p class="text-justify px-4 py-1">
+        Por favor insira os arquivos desejados abaixo:
+      </p>
+      <app-multi-images
+        filesTitle="Arquivos para auditoria"
+        (onFilesChange)="changeFiles($event)">
+      </app-multi-images>
+      <div class="flex items-center justify-end float-end mt-4">
+        <app-button-primary
+          btnWidth="w-full"
+          typeBtn="button"
+          textBtn="ENVIAR"
+          (onClick)="onSend()"
+          [disabledBtn]="files.length == 0">
+        </app-button-primary>
+      </div>
+    </div>
+  </div>
+</div>
