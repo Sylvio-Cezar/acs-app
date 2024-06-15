@@ -7,7 +7,8 @@
       </p>
       <app-multi-images
         filesTitle="Arquivos para auditoria"
-        (onFilesChange)="changeFiles($event)">
+        (onFilesChange)="changeFiles($event)"
+        [selectedFiles]="files">
       </app-multi-images>
       <div class="flex items-center justify-end float-end mt-4">
         <app-button-primary

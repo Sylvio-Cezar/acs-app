@@ -15,6 +15,7 @@ export class AuditComponent {
   ) {}
 
   onSend() {
+    this.files = [];
     this.messageService.successMessage("Arquivo(s) enviado(s) com sucesso! Por favor aguarde 15~20 minutos pelo e-mail de confirmação.");
   }
 

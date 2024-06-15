@@ -12,8 +12,8 @@ export class MultiImagesComponent implements OnInit {
 
   @Input() filesTitle: string = '';
   @Output() onFilesChange = new EventEmitter<string[]>();
+  @Input() selectedFiles: string[] = [];
 
-  selectedFiles: string[] = [];
   fileNames: string[] = [];
   changeEvent: any = '';
 

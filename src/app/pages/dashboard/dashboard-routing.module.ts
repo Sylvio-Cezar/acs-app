@@ -13,6 +13,12 @@ import { FgtsComponent } from './labor/fgts/fgts.component';
 import { ThirteenFirstSalaryComponent } from './labor/thirteen-first-salary/thirteen-first-salary.component';
 import { UnionContributionsComponent } from './labor/union-contributions/union-contributions.component';
 import { AuditComponent } from './audit/audit.component';
+import { EfdReinfFederalComponent } from './federal/efd-reinf-federal/efd-reinf-federal.component';
+import { DctfWebFederalComponent } from './federal/dctf-web-federal/dctf-web-federal.component';
+import { PisCofinsComponent } from './federal/pis-cofins/pis-cofins.component';
+import { SimplesNacionalComponent } from './federal/simples-nacional/simples-nacional.component';
+import { MeiComponent } from './federal/mei/mei.component';
+import { EcdComponent } from './federal/ecd/ecd.component';
 
 const routes: Routes = [
   {
@@ -30,6 +36,30 @@ const routes: Routes = [
       {
         path: 'irpf',
         component: IrpfComponent
+      },
+      {
+        path: 'efd-reinf-federal',
+        component: EfdReinfFederalComponent
+      },
+      {
+        path: 'dctfweb-federal',
+        component: DctfWebFederalComponent
+      },
+      {
+        path: 'pis-cofins',
+        component: PisCofinsComponent
+      },
+      {
+        path: 'simples-nacional',
+        component: SimplesNacionalComponent
+      },
+      {
+        path: 'mei',
+        component: MeiComponent
+      },
+      {
+        path: 'ecd',
+        component: EcdComponent
       },
       {
         path: 'ferias-coletivas',
