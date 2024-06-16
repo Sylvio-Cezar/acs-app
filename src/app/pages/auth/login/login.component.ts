@@ -80,6 +80,7 @@ export class LoginComponent {
 
   redirect(): void {
     this.user.id = 1;
+    this.user.name = 'Admin';
     this.authService.setUserData(this.user);
     this.router.navigate(['/dashboard/home']);
   }
