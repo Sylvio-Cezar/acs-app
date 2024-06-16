@@ -27,6 +27,8 @@ import { TaxDiffComponent } from './icms/tax-diff/tax-diff.component';
 import { IcsmFuelComponent } from './icms/icsm-fuel/icsm-fuel.component';
 import { ImportedComponent } from './icms/imported/imported.component';
 import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.component';
+import { StateScopeComponent } from './obligations/state-scope/state-scope.component';
+import { FederalScopeComponent } from './obligations/federal-scope/federal-scope.component';
 
 const routes: Routes = [
   {
@@ -104,6 +106,14 @@ const routes: Routes = [
       {
         path: 'ambito-trabalhista',
         component: LaborScopeComponent
+      },
+      {
+        path: 'ambito-federal',
+        component: FederalScopeComponent
+      },
+      {
+        path: 'ambito-estadual',
+        component: StateScopeComponent
       },
       {
         path: 'cfop',

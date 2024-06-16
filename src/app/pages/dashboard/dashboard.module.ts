@@ -30,6 +30,8 @@ import { IcsmFuelComponent } from './icms/icsm-fuel/icsm-fuel.component';
 import { ImportedComponent } from './icms/imported/imported.component';
 import { TaxDiffComponent } from './icms/tax-diff/tax-diff.component';
 import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.component';
+import { FederalScopeComponent } from './obligations/federal-scope/federal-scope.component';
+import { StateScopeComponent } from './obligations/state-scope/state-scope.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,6 @@ import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.
     UnionContributionsComponent,
     VacationComponent,
     IrpfComponent,
-    LaborScopeComponent,
     TaxRatesComponent,
     EfdReinfFederalComponent,
     DctfWebFederalComponent,
@@ -60,6 +61,9 @@ import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.
     ImportedComponent,
     TaxDiffComponent,
     TaxReplacementComponent,
+    LaborScopeComponent,
+    FederalScopeComponent,
+    StateScopeComponent,
   ],
   imports: [
     CommonModule,
