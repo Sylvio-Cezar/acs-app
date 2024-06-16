@@ -22,11 +22,20 @@ import { PisCofinsComponent } from './federal/pis-cofins/pis-cofins.component';
 import { SimplesNacionalComponent } from './federal/simples-nacional/simples-nacional.component';
 import { MeiComponent } from './federal/mei/mei.component';
 import { EcdComponent } from './federal/ecd/ecd.component';
+import { CfopComponent } from './icms/cfop/cfop.component';
+import { CstComponent } from './icms/cst/cst.component';
+import { DestdaComponent } from './icms/destda/destda.component';
+import { DifalComponent } from './icms/difal/difal.component';
+import { IcsmFuelComponent } from './icms/icsm-fuel/icsm-fuel.component';
+import { ImportedComponent } from './icms/imported/imported.component';
+import { TaxDiffComponent } from './icms/tax-diff/tax-diff.component';
+import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     HomeComponent,
+    AuditComponent,
     DctfWebComponent,
     EfdReinfComponent,
     FamilySalaryComponent,
@@ -43,7 +52,14 @@ import { EcdComponent } from './federal/ecd/ecd.component';
     SimplesNacionalComponent,
     MeiComponent,
     EcdComponent,
-    AuditComponent,
+    CfopComponent,
+    CstComponent,
+    DestdaComponent,
+    DifalComponent,
+    IcsmFuelComponent,
+    ImportedComponent,
+    TaxDiffComponent,
+    TaxReplacementComponent,
   ],
   imports: [
     CommonModule,

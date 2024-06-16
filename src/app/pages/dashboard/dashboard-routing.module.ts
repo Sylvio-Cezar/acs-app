@@ -19,6 +19,14 @@ import { PisCofinsComponent } from './federal/pis-cofins/pis-cofins.component';
 import { SimplesNacionalComponent } from './federal/simples-nacional/simples-nacional.component';
 import { MeiComponent } from './federal/mei/mei.component';
 import { EcdComponent } from './federal/ecd/ecd.component';
+import { CfopComponent } from './icms/cfop/cfop.component';
+import { CstComponent } from './icms/cst/cst.component';
+import { DestdaComponent } from './icms/destda/destda.component';
+import { DifalComponent } from './icms/difal/difal.component';
+import { TaxDiffComponent } from './icms/tax-diff/tax-diff.component';
+import { IcsmFuelComponent } from './icms/icsm-fuel/icsm-fuel.component';
+import { ImportedComponent } from './icms/imported/imported.component';
+import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.component';
 
 const routes: Routes = [
   {
@@ -96,6 +104,38 @@ const routes: Routes = [
       {
         path: 'ambito-trabalhista',
         component: LaborScopeComponent
+      },
+      {
+        path: 'cfop',
+        component: CfopComponent
+      },
+      {
+        path: 'cst',
+        component: CstComponent
+      },
+      {
+        path: 'destda',
+        component: DestdaComponent
+      },
+      {
+        path: 'difal-nao-contribuinte',
+        component: DifalComponent
+      },
+      {
+        path: 'diferencial-aliquotas',
+        component: TaxDiffComponent
+      },
+      {
+        path: 'icms-monofasico-combustivel',
+        component: IcsmFuelComponent
+      },
+      {
+        path: 'importados',
+        component: ImportedComponent
+      },
+      {
+        path: 'substituicao-tributaria',
+        component: TaxReplacementComponent
       },
       {
         path: '', redirectTo: 'home', pathMatch: 'full'
