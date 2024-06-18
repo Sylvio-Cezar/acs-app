@@ -192,15 +192,15 @@
               <img src="/assets/svgs/landmark-solid.svg" class="w-4 h-4" style="filter: invert(1);">
               <a (click)="navigate('cest')" class="ml-2 cursor-pointer">CEST</a>
             </li> -->
-            <li class="flex items-center" (click)="activatedMenu('cfop')"
-              [ngClass]="menuActivated == 'cfop' ? 'border-b-4 border-r-4 border-blue-800 rounded-br-lg' : ''">
-              <img src="/assets/svgs/table-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a (click)="navigate('cfop')" class="ml-2 cursor-pointer">CFOP</a>
-            </li>
             <li class="flex items-center" (click)="activatedMenu('cst')"
               [ngClass]="menuActivated == 'cst' ? 'border-b-4 border-r-4 border-blue-800 rounded-br-lg' : ''">
               <img src="/assets/svgs/table-solid.svg" class="w-4 h-4" style="filter: invert(1);">
               <a (click)="navigate('cst')" class="ml-2 cursor-pointer">CST</a>
+            </li>
+            <li class="flex items-center" (click)="activatedMenu('cfop')"
+              [ngClass]="menuActivated == 'cfop' ? 'border-b-4 border-r-4 border-blue-800 rounded-br-lg' : ''">
+              <img src="/assets/svgs/table-solid.svg" class="w-4 h-4" style="filter: invert(1);">
+              <a (click)="navigate('cfop')" class="ml-2 cursor-pointer">CFOP</a>
             </li>
             <li class="flex items-center" (click)="activatedMenu('destda')"
               [ngClass]="menuActivated == 'destda' ? 'border-b-4 border-r-4 border-blue-800 rounded-br-lg' : ''">

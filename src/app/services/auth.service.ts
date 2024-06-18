@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   userData = new BehaviorSubject<any>({} as any);
@@ -12,13 +12,18 @@ export class AuthService {
   permissionsData = new BehaviorSubject<Array<string> | undefined>(undefined);
   tantoushaCompany = new BehaviorSubject<number>(0);
   adminProfile = new BehaviorSubject<number>(0);
+  private storage: Storage
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+  ) {
+    this.storage = window.localStorage;
   }
 
   // BehaviorSubject
   setUserData(userData: any): void {
-    this.userData.next(userData);
+    // this.userData.next(userData);
+    this.storage.setItem('user', JSON.stringify(userData));
   }
 
   setProfileCompleted(value: boolean) {
@@ -30,7 +35,8 @@ export class AuthService {
   }
 
   getUserData(): any {
-    return this.userData.getValue();
+    // return this.userData.getValue();
+    return JSON.parse(this.storage.getItem('user') as string);
   }
 
   getUserObservable(): Observable<any> {

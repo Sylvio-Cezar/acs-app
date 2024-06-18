@@ -20,6 +20,7 @@ import { FormComponent } from "../components/commons/form/form.component";
 import { ModalComponent } from "../components/commons/modal/modal.component";
 import { ChatsComponent } from "../components/commons/chats/chats.component";
 import { MultiImagesComponent } from "../components/commons/input/multi-images/multi-images.component";
+import { TableComponent } from "../components/commons/table/table.component";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MultiImagesComponent } from "../components/commons/input/multi-images/m
     ModalComponent,
     ChatsComponent,
     MultiImagesComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +68,7 @@ import { MultiImagesComponent } from "../components/commons/input/multi-images/m
     ModalComponent,
     ChatsComponent,
     MultiImagesComponent,
+    TableComponent,
   ]
 })
 export class SharedModule { }

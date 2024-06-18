@@ -27,7 +27,8 @@ export class LoginComponent {
     private authService: AuthService
   ) {
     let userLogged = this.authService.getUserData();
-    if (userLogged.id) {
+    console.log(userLogged)
+    if (userLogged?.id) {
       this.redirect();
     }
   }

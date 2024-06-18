@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from '../../../services/message.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -15,6 +16,7 @@ export class DashboardHeaderComponent {
   constructor(
     private messageService: MessageService,
     private router: Router,
+    private authService: AuthService
   ) { }
 
   toggleMobileMenu() {
@@ -32,7 +34,8 @@ export class DashboardHeaderComponent {
 
   logout() {
     // Lógica para logout
-    this.router.navigate(['']);
+    this.authService.setUserData(null);
+    this.router.navigate(['/']);
   }
 
 

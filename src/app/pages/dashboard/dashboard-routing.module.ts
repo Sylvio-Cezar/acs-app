@@ -29,11 +29,13 @@ import { ImportedComponent } from './icms/imported/imported.component';
 import { TaxReplacementComponent } from './icms/tax-replacement/tax-replacement.component';
 import { StateScopeComponent } from './obligations/state-scope/state-scope.component';
 import { FederalScopeComponent } from './obligations/federal-scope/federal-scope.component';
+import { AuthGuard } from '../../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',

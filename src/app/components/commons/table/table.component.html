@@ -1,0 +1,110 @@
+<div class="w-full shadow-lg rounded-lg xl:overflow-hidden 2xl:overflow-hidden overflow-x-auto"> <!-- overflow porque não cabia a paginação -->
+  <div *ngIf="hasExport || hasEntries || hasSearch" class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+    <div class="flex flex-1 justify-between sm:hidden">
+    </div>
+    <div class="sm:flex sm:flex-1 sm:items-center sm:justify-between">
+      <div *ngIf="pages.recordsTotal > 0">
+        <div class="inline-flex rounded-md" *ngIf="hasExport">
+          <a (click)="exportPrint()"
+            class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-red-700 hover:text-white focus:z-10 cursor-pointer transition duration-300">
+            PRINT
+          </a>
+          <a (click)="exportCSV()"
+            class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-red-700 hover:text-white focus:z-10 cursor-pointer transition duration-300">
+            CSV
+          </a>
+          <a (click)="exportExcel()"
+            class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-red-700 hover:text-white focus:z-10 cursor-pointer transition duration-300">
+            EXCEL
+          </a>
+        </div>
+        <div class="inline-flex rounded-md" *ngIf="hasEntries"
+          [ngClass]="!hasExport ? 'ml-0' : 'ml-4'">
+          <app-select-input
+            selectName="selEntries"
+            selectId="selEntries"
+            textLabel="Entries"
+            [selectValue]="pages.perPage"
+            [labelFloating]="true"
+            (valueChange)="changePerPage($event)">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </app-select-input>
+        </div>
+      </div>
+      <div *ngIf="hasSearch">
+        <app-basic-input
+        inputType="text"
+        inputId="inpSearch"
+        inputName="inpSearch"
+        inputLabel="inpSearch"
+        textLabel="Buscar"
+        [hasIconRight]="true"
+        iconClass="text-black fa-solid fa-search"
+        (valueChange)=getSearch($event)>
+      </app-basic-input>
+      </div>
+    </div>
+  </div>
+  <table id="table" class="w-full overflow-auto xl:table-fixed 2xl:table-fixed"> <!-- overflow adicionado na tabela quando em telas menores -->
+    <thead>
+      <tr class="bg-gray-200">
+        <th *ngFor="let header of tableHeaders" class="w-1/4 py-4 px-6 text-left text-gray-600 font-medium normal-case">
+          {{ header }}
+          <i class="cursor-pointer fas fa-sort"></i> <!-- Font Awesome sort icon -->
+        </th>
+      </tr>
+    </thead>
+    <ng-content></ng-content>
+    <tfoot *ngIf="pages.recordsTotal == 0">
+      <tr>
+        <td [attr.colspan]="tableHeaders.length" class="p-6 text-center">Nenhum dado encontrado.</td>
+      </tr>
+    </tfoot>
+  </table>
+  <div *ngIf="pages.recordsTotal > 0 && hasFooter" class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+    <div class="flex flex-1 justify-between sm:hidden">
+    </div>
+    <div class="sm:flex sm:flex-1 sm:items-center sm:justify-between">
+      <div>
+        <p class="text-sm text-gray-700">
+          Mostrando de
+          <span class="font-medium">{{pages.currentPage * pages.perPage - (pages.perPage -1)}}</span>
+          a
+          <span class="font-medium">{{(pages.currentPage * pages.perPage) < pages.recordsTotal ? pages.currentPage * pages.perPage : pages.recordsTotal}}</span>
+          de
+          <span class="font-medium">{{pages.recordsTotal}}</span>
+          registros
+        </p>
+      </div>
+      <div>
+        <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+          <a (click)="goBack()"
+            class="cursor-pointer relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 transition duration-300">
+            <span class="sr-only">Previous</span>
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a *ngFor="let page of pageNumbers"
+            class="cursor-pointer relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 transition duration-300"
+            (click)="changePagination.emit(page)"
+            [ngClass]="pages.currentPage == page ? ' z-10 bg-red-700 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 hover:bg-red-700' : ''">{{page}}</a>
+          <a *ngIf="maxVisiblePages < dataPages" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</a>
+          <a *ngIf="maxVisiblePages < dataPages" class="cursor-pointer relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 transition duration-300"
+            (click)="changePagination.emit(dataPages)"
+            [ngClass]="pages.currentPage == dataPages ? ' z-10 bg-red-700 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700 hover:bg-red-700' : ''">{{dataPages}}</a>
+          <a (click)="goNext()"
+            class="cursor-pointer relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 transition duration-300">
+            <span class="sr-only">Next</span>
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
