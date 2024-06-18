@@ -1,39 +1,23 @@
 <div class="p-4 bg-white min-h-screen">
   <div class="w-full">
     <div>
-      <h1 class="text-2xl text-center font-bold text-blue-700 mt-4">DCTFWeb</h1>
-      <p class="text-justify px-4 py-1">
-        A DCTFWeb é uma obrigação tributária acessória por meio da qual o contribuinte confessa débitos de contribuições previdenciárias, inclusive as contribuições destinadas a terceiros (outras entidades) e informa a retenção do Imposto sobre a Renda Retido na Fonte (IRRF) decorrente da relação de trabalho, com previsão para a transmissão do IRPJ, CSLL, PIS/Pasep, Cofins e demais IRRF retidos na fonte.
-      </p>
-      <p class="text-justify px-4 py-1">
-        A Instrução Normativa RFB n° 2.005/2021 consolida as condições para a confissão de dívida, de forma centralizada pelo estabelecimento matriz, em instrumentos hábeis e suficientes para a exigência dos créditos tributários nelas consignados por meio da Declaração de Débitos e Créditos Tributários Federais (DCTF) e também, da (DCTFWeb).
-      </p>
-      <p class="text-justify px-4 py-1">
-        Nesta área especial, estão disponíveis, separadas em guias, as seguintes informações sobre o sistema utilizado para editar a declaração, transmiti-la e gerar o documento de arrecadação:
-      </p>
-      <ul class="text-justify grid w-5/6 m-auto border-2 rounded-md">
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>Visão geral:</b> Apresentação do sistema, com informações sobre contribuintes obrigados e dispensados, tributos são informados, dentre outros;
-        </li>
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>Prazos:</b> Informações quanto aos prazos para entrega;
-        </li>
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>Transmissão:</b> Apresenta as condições necessárias para acessar o sistema da DCTFWeb, e como ele é gerado;
-        </li>
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>IRRF:</b> Informações quanto ao Imposto de Renda Retido na Fonte (IRRF) na DCTFWeb;
-        </li>
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>PIS/Cofins/CSLL:</b> Orientações quanto ao PIS sobre folha e CSRF (PIS/Pasep, Cofins e CSLL) na DCTFWeb;
-        </li>
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>PER/DCOMP Web:</b> Esclarece sobre compensações e restituições previdenciárias, bem como, sobre a compensação cruzada, através dos programas PGD PER/DCOMP e PER/DCOMP Web;
-        </li>
-        <li class="border-b-2 px-4 py-1 w-full">
-          <b>Penalidades:</b> Considerações quanto às penalidades aplicáveis à falta de entrega ou à entrega de informações com incorreções.
-        </li>
-      </ul>
+      <h1 class="text-2xl text-center font-bold text-blue-700 mt-4">Âmbito Trabalhista / Previdenciário</h1>
+      <app-table
+      [tableHeaders]="tableHeaders"
+      [pages]="pages"
+      [hasExport]="false"
+      [hasSearch]="false"
+      [hasFooter]="false"
+      [hasEntries]="false">
+      <tbody class="bg-white">
+        <tr *ngFor="let data of dataTable">
+          <th><a class="cursor-pointer text-bold text-blue-800 hover:text-blue-600" (click)="navigate(data.route)">{{ data.type }}</a></th>
+          <td>{{ data.mandatory }}</td>
+          <td>{{ data.frequency }}</td>
+          <td>{{ data.time }}</td>
+        </tr>
+      </tbody>
+    </app-table>
     </div>
   </div>
 </div>

@@ -40,7 +40,7 @@ export class MultiImagesComponent implements OnInit {
               this.messageService.errorMessage("Tamanho do arquivo excede o limite de 5MB");
             }
             if (!allowedTypes.includes(file.type)) {
-              this.messageService.errorMessage("Tipo de arquivo inválido. Por favor envie um arquivo PNG, JPEG ou JPG");
+              this.messageService.errorMessage("Tipo de arquivo inválido. Por favor envie um arquivo PNG, JPEG, JPG, PDF, TXT, CSV, HTML, DOC ou DOCX");
             }
           }
         });

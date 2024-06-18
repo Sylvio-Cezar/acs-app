@@ -4,13 +4,13 @@
     <li>
       <details class="group">
         <summary [ngClass]="menuActivated == 'home' ? 'bg-blue-800 rounded-lg' : ''"
-          class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
+          class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none">
 
           <span class="text-white" class="flex gap-2 items-center">
             <img src="/assets/svgs/house-solid.svg" class="w-5 h-5" style="filter: invert(1);">
 
             <span class="text-white" (click)="activatedMenu('home')">
-              <a (click)="navigate('home')">Home</a>
+              <a (click)="navigate('home')" class="cursor-pointer">Home</a>
             </span>
           </span>
         </summary>
@@ -19,13 +19,13 @@
     <li>
       <details class="group">
         <summary [ngClass]="menuActivated == 'audit' ? 'bg-blue-800 rounded-lg' : ''"
-          class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none hover:cursor-pointer">
+          class="flex items-center justify-between gap-2 p-2 font-medium marker:content-none">
 
           <span class="text-white" class="flex gap-2 items-center">
             <img src="/assets/svgs/magnifying-glass-solid.svg" class="w-5 h-5" style="filter: invert(1);">
 
             <span class="text-white" (click)="activatedMenu('audit')">
-              <a (click)="navigate('audit')">Auditoria</a>
+              <a (click)="navigate('audit')" class="cursor-pointer">Auditoria</a>
             </span>
           </span>
         </summary>
@@ -260,7 +260,7 @@
             <li class="flex items-center" (click)="activatedMenu('ambito-trabalhista')"
               [ngClass]="menuActivated == 'ambito-trabalhista' ? 'border-b-4 border-r-4 border-blue-800 rounded-br-lg' : ''">
               <img src="/assets/svgs/building-solid.svg" class="w-4 h-4" style="filter: invert(1);">
-              <a (click)="navigate('ambito-trabalhista')" class="ml-2 cursor-pointer">Âmbito Trabalhista/Previdenciário</a>
+              <a (click)="navigate('ambito-trabalhista')" class="ml-2 cursor-pointer">Âmbito Trabalhista / Previdenciário</a>
             </li>
             <li class="flex items-center" (click)="activatedMenu('ambito-federal')"
               [ngClass]="menuActivated == 'ambito-federal' ? 'border-b-4 border-r-4 border-blue-800 rounded-br-lg' : ''">
